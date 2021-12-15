@@ -4,6 +4,7 @@ go 1.17
 
 require (
 	github.com/DATA-DOG/go-sqlmock v1.5.0
+	github.com/bxcodec/faker v2.0.1+incompatible
 	github.com/gin-gonic/gin v1.7.7
 	github.com/jmoiron/sqlx v1.3.4
 	github.com/joho/godotenv v1.4.0
