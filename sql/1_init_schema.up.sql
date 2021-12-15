@@ -1,3 +1,5 @@
+CREATE TYPE promo_type_enum as enum('product', 'discount');
+
 CREATE TABLE products (
 	product_id bigserial NOT NULL,
 	sku varchar(255) NOT NULL,
@@ -32,3 +34,5 @@ CREATE TABLE order_details (
 	qty int4 NOT NULL,
 	CONSTRAINT order_detail_id_pkey PRIMARY KEY (order_detail_id)
 );
+
+
