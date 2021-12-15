@@ -1,0 +1,13 @@
+version: "3.9"
+
+services:
+  shop_postgres:
+    container_name: shop_postgres
+    image: postgres:alpine
+    restart: unless-stopped
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_DB: shop
+      POSTGRES_USER: shop
+      POSTGRES_PASSWORD: shop
