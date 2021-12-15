@@ -51,5 +51,9 @@ func main() {
 	checkoutHandler.InitRouter(router)
 
 	log.Println("Starting HTTP server")
-	router.Run(":8080")
+
+	err = router.Run(":8080")
+	if err != nil {
+		log.Fatal(err)
+	}
 }

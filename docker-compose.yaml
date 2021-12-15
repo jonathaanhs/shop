@@ -1,6 +1,22 @@
 version: "3.9"
 
+networks:
+  shop:
+    driver: bridge
+
 services:
+  shop_svc:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: shop_svc
+    restart: on-failure
+    ports:
+      - 8080:8080
+    depends_on:
+      - shop_postgres
+    networks:
+      - shop
   shop_postgres:
     container_name: shop_postgres
     image: postgres:alpine
@@ -11,3 +27,11 @@ services:
       POSTGRES_DB: shop
       POSTGRES_USER: shop
       POSTGRES_PASSWORD: shop
+    networks:
+      - shop
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+  
